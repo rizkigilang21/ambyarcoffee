@@ -9,7 +9,7 @@ package ambyarcoffee;
  *
  * @author macbookair
  */
-public class Menupesanan {
+public class MenuPesanan {
      private Menu namaMenu;
     private int harga;
     private int qty;
