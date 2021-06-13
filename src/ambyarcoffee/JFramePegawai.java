@@ -21,6 +21,8 @@ public class JFramePegawai extends javax.swing.JFrame {
     public JFramePegawai(CoffeeShop cs) {
         this.cs = cs;
         initComponents();
+        jTextFieldId.setEnabled(false);
+        this.resetFormPegawai();
     }
     
     public JFramePegawai() {
@@ -310,14 +312,12 @@ public class JFramePegawai extends javax.swing.JFrame {
                 cs.tambahPegawai(pgw);
                 jTextAreaOutput.setText("PEGAWAI TERSIMPAN");
             }
+            this.resetFormPegawai();
         }
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetActionPerformed
-        jTextFieldId.setText("");
-        jTextFieldNama.setText("");
-        jTextFieldAlamat.setText("");
-        jComboBoxJk.setSelectedIndex(0);
+        this.resetFormPegawai();
         jTextAreaOutput.setText("");
     }//GEN-LAST:event_jButtonResetActionPerformed
 
@@ -359,6 +359,14 @@ public class JFramePegawai extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -366,6 +374,13 @@ public class JFramePegawai extends javax.swing.JFrame {
                 new JFramePegawai().setVisible(true);
             }
         });
+    }
+    
+    public void resetFormPegawai(){
+        jTextFieldId.setText(String.valueOf(this.cs.getIdPegawai()));
+        jTextFieldNama.setText("");
+        jTextFieldAlamat.setText("");
+        jComboBoxJk.setSelectedIndex(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

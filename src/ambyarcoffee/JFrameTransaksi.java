@@ -5,6 +5,8 @@
  */
 package ambyarcoffee;
 
+import java.util.Date;
+
 /**
  *
  * @author Rizki
@@ -15,12 +17,15 @@ public class JFrameTransaksi extends javax.swing.JFrame {
      */
     private static final long serialVersionUID = 1L;
     CoffeeShop cs = new CoffeeShop();
+    Date date = new Date();
     /**
      * Creates new form NewJFramemainclass
      */
     public JFrameTransaksi(CoffeeShop cs) {
         this.cs = cs;
         initComponents();
+        this.reset();
+        jTextFieldIdTransaksi.setEnabled(false);
     }
     
     public JFrameTransaksi() {
@@ -58,6 +63,7 @@ public class JFrameTransaksi extends javax.swing.JFrame {
         jTextFieldIdPegawai = new javax.swing.JTextField();
         jScrollPaneOutput = new javax.swing.JScrollPane();
         jTextAreaOutput = new javax.swing.JTextArea();
+        jButtonLaporan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,6 +159,13 @@ public class JFrameTransaksi extends javax.swing.JFrame {
         jTextAreaOutput.setWrapStyleWord(true);
         jScrollPaneOutput.setViewportView(jTextAreaOutput);
 
+        jButtonLaporan.setText("LAPORAN");
+        jButtonLaporan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLaporanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -204,13 +217,14 @@ public class JFrameTransaksi extends javax.swing.JFrame {
                                     .addComponent(jLabelIdPegawai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldIdPegawai)
+                                    .addComponent(jTextFieldIdPegawai, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                                     .addComponent(jTextFieldIdTransaksi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(58, 58, 58)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonReset, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonPesan, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonReset, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addComponent(jButtonPesan, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addComponent(jButtonBack, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addComponent(jButtonLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -229,7 +243,7 @@ public class JFrameTransaksi extends javax.swing.JFrame {
                             .addComponent(jSpinnerQty1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelQty2)
                             .addComponent(jSpinnerQty2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 18, Short.MAX_VALUE))
                     .addComponent(jButtonPesan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -245,7 +259,7 @@ public class JFrameTransaksi extends javax.swing.JFrame {
                             .addComponent(jSpinnerQty4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButtonReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelIdTransaksi)
@@ -254,8 +268,10 @@ public class JFrameTransaksi extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelIdPegawai)
                             .addComponent(jTextFieldIdPegawai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButtonBack, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(jButtonLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPaneOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -323,9 +339,11 @@ public class JFrameTransaksi extends javax.swing.JFrame {
                 mp.setQty(Integer.parseInt(String.valueOf(jSpinnerQty4.getValue())));
                 trs.tambahMenu(mp);
             }
+            trs.setTs(date.getTime());
             trs.setTotalHarga();
             cs.tambahTransaksi(trs);
             jTextAreaOutput.setText("Transaksi " + jTextFieldIdTransaksi.getText() + " berhasil dibuat." +
+                                    "\n\nTanggal : "+trs.getTs()+
                                     "\n--------------------------------------------------------------------\n" +
                                     trs.cetakMenu(Menu.KOPI_HITAM) + 
                                     trs.cetakMenu(Menu.KOPI_SUSU) + 
@@ -336,6 +354,7 @@ public class JFrameTransaksi extends javax.swing.JFrame {
                                     "\nTOTAL HARGA:\t\t" + trs.getTotalHarga() +
                                     "\nPegawai yang menangani:\t" + trs.getPegawai().getNamaPegawai() + " (" + trs.getPegawai().getIdPegawai() + ")"
                                     );
+            this.reset();
         }
     }//GEN-LAST:event_jButtonPesanActionPerformed
 
@@ -374,22 +393,15 @@ public class JFrameTransaksi extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxMoccacinoActionPerformed
 
     private void jButtonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetActionPerformed
-        jCheckBoxKopiHitam.setSelected(false);
-        jSpinnerQty1.setValue(1);
-        jSpinnerQty1.setEnabled(false);
-        jCheckBoxKopiSusu.setSelected(false);
-        jSpinnerQty2.setValue(1);
-        jSpinnerQty2.setEnabled(false);
-        jCheckBoxMoccacino.setSelected(false);
-        jSpinnerQty3.setValue(1);
-        jSpinnerQty3.setEnabled(false);
-        jCheckBoxCapuccino.setSelected(false);
-        jSpinnerQty4.setValue(1);
-        jSpinnerQty4.setEnabled(false);
-        jTextFieldIdTransaksi.setText("");
-        jTextFieldIdPegawai.setText("");
+        this.reset();
         jTextAreaOutput.setText("");
     }//GEN-LAST:event_jButtonResetActionPerformed
+
+    private void jButtonLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLaporanActionPerformed
+        // TODO add your handling code here:
+        new JFrameLaporan(cs).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonLaporanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -432,6 +444,22 @@ public class JFrameTransaksi extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -440,9 +468,27 @@ public class JFrameTransaksi extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void reset(){
+        jCheckBoxKopiHitam.setSelected(false);
+        jSpinnerQty1.setValue(1);
+        jSpinnerQty1.setEnabled(false);
+        jCheckBoxKopiSusu.setSelected(false);
+        jSpinnerQty2.setValue(1);
+        jSpinnerQty2.setEnabled(false);
+        jCheckBoxMoccacino.setSelected(false);
+        jSpinnerQty3.setValue(1);
+        jSpinnerQty3.setEnabled(false);
+        jCheckBoxCapuccino.setSelected(false);
+        jSpinnerQty4.setValue(1);
+        jSpinnerQty4.setEnabled(false);
+        jTextFieldIdTransaksi.setText(String.valueOf(this.cs.getIdTransaksi()));
+        jTextFieldIdPegawai.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
+    private javax.swing.JButton jButtonLaporan;
     private javax.swing.JButton jButtonPesan;
     private javax.swing.JButton jButtonReset;
     private javax.swing.JCheckBox jCheckBoxCapuccino;

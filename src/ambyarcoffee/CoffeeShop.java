@@ -60,4 +60,42 @@ public class CoffeeShop {
         }
         return null;
     }
+    
+    
+    ////fungsi baru
+    
+    public int getIdPegawai(){
+        return this.daftarPegawai.size()+1;
+    }
+    
+    public int getIdTransaksi(){
+        return this.daftarTransaksi.size()+1;
+    }
+    
+    public String getReport(String id){
+        String temp = "";
+        int tempTotal = 0;
+        for(Pegawai pgw: daftarPegawai){
+            if(id.equalsIgnoreCase(pgw.getIdPegawai())){
+                for(Transaksi t: daftarTransaksi){
+                    if(t.getPegawai().getIdPegawai().equalsIgnoreCase(id)){
+                        
+                        temp +=     "\n\nTanggal : "+t.getTs()+
+                                    "\n--------------------------------------------------------------------\n" +
+                                    t.cetakMenu(Menu.KOPI_HITAM) + 
+                                    t.cetakMenu(Menu.KOPI_SUSU) + 
+                                    t.cetakMenu(Menu.CAPUCCINO) + 
+                                    t.cetakMenu(Menu.MOCCACINO) +
+                                    "\n--------------------------------------------------------------------\n" ;
+                        tempTotal += t.getTotalHarga();
+                    }
+                }
+                temp += "\n--------------------------------------------------------------------\n" + 
+                        "\nTOTAL HARGA:\t\t" + tempTotal+
+                        "\n--------------------------------------------------------------------\n" ;
+                return temp;
+            }
+        }
+        return "DATA PEGAWAI TIDAK ADA";
+    }
 }

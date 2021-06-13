@@ -5,6 +5,7 @@
  */
 package ambyarcoffee;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +17,7 @@ public class Transaksi {
     private Pegawai pegawai;
     private ArrayList<MenuPesanan>daftarMenuPesanan=new ArrayList<>();
     private int totalHarga;
+    private Timestamp ts;
 
     public String getIdTransaksi() {
         return idTransaksi;
@@ -67,6 +69,16 @@ public class Transaksi {
             harga = harga + (mp.getHarga()*mp.getQty());
         }
         this.totalHarga = harga;
+    }
+    
+    /// fungsi baru
+    
+    public void setTs(Long time){
+        ts = new Timestamp(time);
+    }
+    
+    public Timestamp getTs(){
+        return ts;
     }
     
 }
